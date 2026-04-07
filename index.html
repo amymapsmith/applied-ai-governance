@@ -5,26 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Applied AI Governance</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:   #0f1e36;
-      --teal:   #1a7a8a;
-      --teal-light: #22a0b4;
-      --slate:  #3d5166;
-      --sand:   #f5f2ed;
+      --navy:   #1e2620;
+      --teal:   #4a6b52;
+      --teal-light: #a8d4a0;
+      --slate:  #3d5a44;
+      --sand:   #f3f2ec;
       --white:  #ffffff;
-      --text:   #1c2a38;
-      --muted:  #5a6e82;
-      --border: #dde4ea;
-      --accent: #e8f4f7;
+      --text:   #1e2620;
+      --muted:  #637068;
+      --border: #c8d4c8;
+      --accent: #e8ede8;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Georgia', serif;
+      font-family: 'Montserrat', sans-serif;
       color: var(--text);
       background: var(--white);
       line-height: 1.7;
@@ -34,7 +37,7 @@
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      background: rgba(15, 30, 54, 0.96);
+      background: rgba(30, 38, 32, 0.96);
       backdrop-filter: blur(6px);
       z-index: 100;
       padding: 0 2rem;
@@ -45,7 +48,7 @@
     }
 
     .nav-brand {
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1rem;
       font-weight: 600;
       color: var(--white);
@@ -62,7 +65,7 @@
     }
 
     nav ul a {
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.875rem;
       color: rgba(255,255,255,0.75);
       text-decoration: none;
@@ -75,7 +78,7 @@
     /* ─── HERO ─── */
     #hero {
       min-height: 100vh;
-      background: linear-gradient(150deg, var(--navy) 0%, #1a3350 55%, #0d2a3a 100%);
+      background: linear-gradient(150deg, var(--navy) 0%, #263329 55%, #141c16 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -89,7 +92,7 @@
     }
 
     .hero-eyebrow {
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 0.18em;
@@ -125,7 +128,7 @@
       color: var(--white);
       text-decoration: none;
       padding: 0.875rem 2rem;
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.9rem;
       font-weight: 600;
       letter-spacing: 0.04em;
@@ -144,7 +147,7 @@
       color: rgba(255,255,255,0.85);
       text-decoration: none;
       padding: 0.875rem 2rem;
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.9rem;
       font-weight: 500;
       letter-spacing: 0.04em;
@@ -167,7 +170,7 @@
     }
 
     .section-label {
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.18em;
@@ -216,7 +219,7 @@
     }
 
     .contrast-card h4 {
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -267,7 +270,7 @@
     }
 
     .service-card:hover {
-      box-shadow: 0 4px 20px rgba(26,122,138,0.1);
+      box-shadow: 0 4px 20px rgba(74,107,82,0.12);
       border-color: var(--teal-light);
     }
 
@@ -279,7 +282,7 @@
     }
 
     .service-card h3 {
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1rem;
       font-weight: 700;
       color: var(--navy);
@@ -342,7 +345,7 @@
     }
 
     .speaking-card h3 {
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1rem;
       font-weight: 700;
       color: var(--navy);
@@ -350,7 +353,7 @@
     }
 
     .speaking-card .meta {
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.8rem;
       color: var(--teal);
       font-weight: 600;
@@ -366,7 +369,7 @@
     }
 
     .link-arrow {
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--teal);
@@ -409,7 +412,7 @@
       text-decoration: none;
       padding: 0.7rem 1.5rem;
       border-radius: 100px;
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.875rem;
       font-weight: 600;
       transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
@@ -418,7 +421,7 @@
     .contact-pill:hover {
       border-color: var(--teal);
       color: var(--teal);
-      box-shadow: 0 2px 12px rgba(26,122,138,0.15);
+      box-shadow: 0 2px 12px rgba(74,107,82,0.18);
     }
 
     /* ─── FOOTER ─── */
@@ -429,7 +432,7 @@
     }
 
     footer p {
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.8rem;
       color: rgba(255,255,255,0.35);
     }
@@ -589,7 +592,7 @@
     <div class="section-inner">
       <p class="section-label">About</p>
       <h2 class="section-title">I've built this from the inside.</h2>
-      <p style="font-family: 'Helvetica Neue', sans-serif; font-size: 1rem; font-weight: 600; color: var(--teal); margin-bottom: 2rem; letter-spacing: 0.02em;">10+ Years working with data, AI, and policy</p>
+      <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 600; color: var(--teal); margin-bottom: 2rem; letter-spacing: 0.02em;">10+ Years working with data, AI, and policy</p>
       <div class="about-grid">
         <img src="amy_smith.jpg" alt="Amy Smith" class="about-photo" />
         <div class="about-body">
@@ -631,8 +634,8 @@
   <!-- SPEAKING -->
   <section id="speaking">
     <div class="section-inner">
-      <p class="section-label">Speaking &amp; Writing</p>
-      <h2 class="section-title">Sharing the work publicly.</h2>
+      <p class="section-label">Speaking and Writing</p>
+      <h2 class="section-title">Find me online</h2>
 
       <div class="speaking-card">
         <i class="iconoir-microphone speaking-icon"></i>
