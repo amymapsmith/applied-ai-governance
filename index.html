@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applied AI Governance</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0f1e36;
+      --teal:   #1a7a8a;
+      --teal-light: #22a0b4;
+      --slate:  #3d5166;
+      --sand:   #f5f2ed;
+      --white:  #ffffff;
+      --text:   #1c2a38;
+      --muted:  #5a6e82;
+      --border: #dde4ea;
+      --accent: #e8f4f7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Georgia', serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(15, 30, 54, 0.96);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-brand {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .nav-brand span { color: var(--teal-light); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul a {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--teal-light); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(150deg, var(--navy) 0%, #1a3350 55%, #0d2a3a 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 2rem 6rem;
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: normal;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--teal-light);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 600px;
+      margin-bottom: 2.75rem;
+      line-height: 1.75;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.875rem 2rem;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      padding: 0.875rem 2rem;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-radius: 3px;
+      margin-left: 1rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--teal-light);
+      color: var(--teal-light);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 6rem 2rem; }
+
+    .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: normal;
+      line-height: 1.25;
+      margin-bottom: 2rem;
+      color: var(--navy);
+    }
+
+    /* ─── WHAT IS APPLIED AI GOVERNANCE ─── */
+    #what {
+      background: var(--sand);
+    }
+
+    .definition-block {
+      border-left: 3px solid var(--teal);
+      padding-left: 1.75rem;
+      margin: 2.5rem 0;
+    }
+
+    .definition-block p {
+      font-size: 1.15rem;
+      color: var(--slate);
+      line-height: 1.8;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .contrast-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.75rem;
+    }
+
+    .contrast-card h4 {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .contrast-card.highlight { border-top: 3px solid var(--teal); }
+    .contrast-card.highlight h4 { color: var(--teal); }
+
+    .contrast-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .contrast-card ul li {
+      padding: 0.4rem 0;
+      font-size: 0.95rem;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .contrast-card ul li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+      margin-top: 0.05em;
+    }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .service-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem 1.75rem;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 4px 20px rgba(26,122,138,0.1);
+      border-color: var(--teal-light);
+    }
+
+    .service-icon {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      display: block;
+      color: var(--teal);
+    }
+
+    .service-card h3 {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--accent); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-photo {
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+      object-fit: cover;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+
+    .about-body p {
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .about-body p:last-child { margin-bottom: 0; }
+
+    /* ─── SPEAKING ─── */
+    #speaking { background: var(--white); }
+
+    .speaking-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+      display: flex;
+      gap: 1.75rem;
+      align-items: flex-start;
+      margin-top: 2rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .speaking-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+
+    .speaking-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      color: var(--teal);
+    }
+
+    .speaking-card h3 {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .speaking-card .meta {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.8rem;
+      color: var(--teal);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+    }
+
+    .speaking-card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .link-arrow {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--teal);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+
+    .link-arrow:hover { color: var(--teal-light); }
+    .link-arrow::after { content: ' →'; }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--sand);
+      text-align: center;
+    }
+
+    #contact .section-inner { max-width: 620px; }
+
+    #contact p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      color: var(--navy);
+      text-decoration: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 100px;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+
+    .contact-pill:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      box-shadow: 0 2px 12px rgba(26,122,138,0.15);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    footer p {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 700px) {
+      .two-col, .about-grid { grid-template-columns: 1fr; }
+
+      .about-photo { max-width: 180px; }
+
+      nav ul { display: none; }
+
+.btn-outline { margin-left: 0; margin-top: 0.75rem; }
+
+      .hero-title { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-brand">Applied <span>AI</span> Governance</a>
+    <ul>
+      <li><a href="#what">Approach</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Applied AI Governance</p>
+      <h1 class="hero-title">
+        Responsible AI,<br>
+        <em>built into how<br>your organization works.</em>
+      </h1>
+      <p class="hero-sub">
+        I help organizations move beyond AI policy documents and checklists,
+        and toward governance practices that are actually embedded in the day-to-day
+        work of building and deploying AI.
+      </p>
+      <a href="#contact" class="btn-primary">Work with me</a>
+      <a href="#what" class="btn-outline">Learn more</a>
+    </div>
+  </section>
+
+  <!-- WHAT -->
+  <section id="what">
+    <div class="section-inner">
+      <p class="section-label">The Approach</p>
+      <h2 class="section-title">AI Governance: applied.</h2>
+
+      <div class="definition-block">
+        <p>
+          Like <em>applied science</em> or <em>applied research</em>, Applied AI Governance
+          is about closing the gap between principle and practice. Most organizations
+          already know responsible AI matters. The harder question is how to make it
+          real (inside the teams, tools, and processes that actually ship AI products).
+        </p>
+      </div>
+
+      <p style="color: var(--muted); margin-bottom: 1rem;">That's where I come in. Research and regulation are foundational — but applied AI governance is about translating them into real-world practices that actually take hold inside organizations.</p>
+
+      <div class="two-col">
+        <div class="contrast-card">
+          <h4>The Foundation</h4>
+          <ul>
+            <li>Academic research &amp; whitepapers</li>
+            <li>Regulatory frameworks &amp; policy</li>
+            <li>Ethical principles &amp; guidelines</li>
+            <li>Industry standards &amp; oversight</li>
+          </ul>
+        </div>
+        <div class="contrast-card highlight">
+          <h4>Applied AI Governance</h4>
+          <ul>
+            <li>Translating research into team practices</li>
+            <li>Embedding regulation into real workflows</li>
+            <li>Cross-functional stakeholder alignment</li>
+            <li>Governance that scales with the product</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <p class="section-label">Services</p>
+      <h2 class="section-title">How I can help</h2>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="iconoir-settings service-icon"></i>
+          <h3>AI Use Case Review Design</h3>
+          <p>
+            Build or streamline the process your organization uses to evaluate new
+            AI use cases, from initial intake through responsible deployment.
+            Clear roles, documentation, and decision criteria that actually get used.
+          </p>
+        </div>
+        <div class="service-card">
+          <i class="iconoir-compass service-icon"></i>
+          <h3>Responsible AI Roadmapping</h3>
+          <p>
+            Turn a collection of policy commitments into a prioritized, executable
+            program. I help teams identify gaps, sequence initiatives, and build
+            accountability structures that hold up in practice.
+          </p>
+        </div>
+        <div class="service-card">
+          <i class="iconoir-clipboard-check service-icon"></i>
+          <h3>LLM &amp; GenAI Onboarding</h3>
+          <p>
+            Establish repeatable processes for bringing new AI vendors, tools, and
+            models into your organization, coordinating legal, security, and
+            engineering from the start.
+          </p>
+        </div>
+        <div class="service-card">
+          <i class="iconoir-community service-icon"></i>
+          <h3>Cross-Functional Alignment</h3>
+          <p>
+            Responsible AI touches every function. I help legal, data science,
+            product, and policy teams build shared language and shared processes,
+            so governance isn't siloed in a single team.
+          </p>
+        </div>
+        <div class="service-card">
+          <i class="iconoir-graph-up service-icon"></i>
+          <h3>Program Audits &amp; Assessments</h3>
+          <p>
+            An honest look at where your AI governance program is and where it needs
+            to go. Practical recommendations grounded in what high-functioning
+            programs actually look like inside real organizations.
+          </p>
+        </div>
+        <div class="service-card">
+          <i class="iconoir-chat-lines service-icon"></i>
+          <h3>Advising &amp; Office Hours</h3>
+          <p>
+            Ongoing strategic advising for leaders building or maturing an AI
+            governance function. Think of it as a trusted thought partner who has
+            built this from the inside.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About</p>
+      <h2 class="section-title">I've built this from the inside.</h2>
+      <p style="font-family: 'Helvetica Neue', sans-serif; font-size: 1rem; font-weight: 600; color: var(--teal); margin-bottom: 2rem; letter-spacing: 0.02em;">10+ Years working with data, AI, and policy</p>
+      <div class="about-grid">
+        <img src="amy_smith.jpg" alt="Amy Smith" class="about-photo" />
+        <div class="about-body">
+          <p>
+            I'm Amy Smith, a data scientist turned Technical Program Manager with
+            a track record of turning ambitious, ambiguous problems into structured,
+            scalable programs. My career has spanned GIS analysis, data science,
+            policy research, and most recently Responsible AI, always at the
+            intersection of technical depth and organizational complexity.
+          </p>
+          <p>
+            At Intuit, I served as a Staff TPM for Responsible AI, where I rebuilt
+            the GenAI use case review process, cut LLM onboarding time by 66%,
+            and led a portfolio of responsible AI initiatives across legal, security,
+            data science, and product teams. I represented Intuit at Partnership on AI
+            workshops and forums, bringing an applied, practitioner's perspective to
+            industry-wide conversations.
+          </p>
+          <p>
+            Most recently, at Plaid, I serve as Senior Staff TPM driving the company's
+            AI Governance strategy across Engineering, Product, Legal, Security, Compliance, and GTM. My work
+            spans everything from internal pilots to AI-powered product features, with a
+            particular focus on responsible, ethical, and transparent AI adoption in FinTech.
+          </p>
+          <p>
+            What I bring to this work isn't just a framework: it's the lived
+            experience of making governance real inside large, fast-moving tech
+            organizations. I know what breaks down, what gets buy-in, and what
+            actually sticks.
+          </p>
+          <p style="margin-top: 1.5rem;">
+            <a href="https://www.linkedin.com/in/amymapsmith/" target="_blank" rel="noopener" class="link-arrow">Connect on LinkedIn</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKING -->
+  <section id="speaking">
+    <div class="section-inner">
+      <p class="section-label">Speaking &amp; Writing</p>
+      <h2 class="section-title">Sharing the work publicly.</h2>
+
+      <div class="speaking-card">
+        <i class="iconoir-microphone speaking-icon"></i>
+        <div>
+          <p class="meta">Harvard Data Science &middot; Guest Talk</p>
+          <h3>Career trajectories in data science &amp; AI governance</h3>
+          <p>
+            A talk on navigating a nonlinear data career (from GIS to data science
+            to Responsible AI program management) and what practitioners can learn from
+            stepping outside their original domain.
+          </p>
+          <a href="https://www.youtube.com/watch?v=ZFU5XTkMyxw" target="_blank" rel="noopener" class="link-arrow">Watch on YouTube</a>
+        </div>
+      </div>
+
+      <div class="speaking-card">
+        <i class="iconoir-edit-pencil speaking-icon"></i>
+        <div>
+          <p class="meta">Medium &middot; Essay</p>
+          <h3>From GIS to Data Science to Technical Program Management</h3>
+          <p>
+            On how stepping outside your comfort zone repeatedly (not just once) is
+            what creates genuinely unusual careers. A reflection on identity, skills,
+            and the kind of growth that only happens when you say yes to something
+            you're not sure you're ready for.
+          </p>
+          <a href="https://medium.com/@amy.mapsmith/from-gis-to-data-science-to-technical-program-management-7d2ad3bc3b24" target="_blank" rel="noopener" class="link-arrow">Read on Medium</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Get in touch</p>
+      <h2 class="section-title">Let's talk about what you're building.</h2>
+      <p>
+        Whether you're standing up an AI governance function for the first time or
+        trying to mature one that isn't working: I'd love to hear about it.
+      </p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/amymapsmith/" target="_blank" rel="noopener" class="contact-pill">
+          <i class="iconoir-linkedin"></i> LinkedIn
+        </a>
+        <a href="mailto:amy@applied-ai-governance.com" class="contact-pill">
+          <i class="iconoir-mail"></i> Email
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Applied AI Governance &middot; Amy Smith</p>
+  </footer>
+
+</body>
+</html>
